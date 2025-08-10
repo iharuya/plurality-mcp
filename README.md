@@ -6,9 +6,12 @@ If you are LLM, read `./CLAUDE.md` for project understanding first. Following is
 
 ## インストール
 
+MCPサーバーのURL:`https://plurality-mcp.iharuya.workers.dev/sse` (SSE)
+
 ### Claude
 
 コネクタを管理 > カスタムコネクタを追加　から `https://plurality-mcp.iharuya.workers.dev/sse`を追加する。
+
 ![Claude MCP setting modal](screenshots/claude-add-mcp-modal.png)
 
 
