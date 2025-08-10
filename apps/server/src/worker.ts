@@ -12,10 +12,10 @@ import { formatSearchResult } from "./lib/format-search-result";
 
 type State = { counter: number };
 
-export class MyMCP extends McpAgent<Env, State> {
+export class PluralityMCP extends McpAgent<Env, State> {
 	server = new McpServer({
-		name: "plurality-mcp/scrapbox-japanese",
-		title: "Plurality MCP 日本語Scrapbox",
+		name: "plurality-mcp",
+		title: "Plurality MCP",
 		version: "0.0.0",
 	});
 
@@ -25,8 +25,8 @@ export class MyMCP extends McpAgent<Env, State> {
 
 	async init() {
 		this.server.tool(
-			"getPage",
-			`Get the data of a scrapbox page by its title`,
+			"getScrapboxPage",
+			`日本語コミュニティのScrapboxプロジェクトからタイトルを指定してページ情報を取得する`,
 			{
 				pageTitle: z.string().min(1),
 			},
@@ -63,8 +63,8 @@ export class MyMCP extends McpAgent<Env, State> {
 			},
 		);
 		this.server.tool(
-			"searchPage",
-			`Search for pages in the scrapbox project`,
+			"searchScrapboxPage",
+			`日本語コミュニティのScrapboxプロジェクトからページを検索する（複数のキーワードはand条件）`,
 			{
 				words: z.string().array().min(1),
 				excludeWords: z.string().array().optional(),
@@ -144,11 +144,11 @@ export default {
 		const url = new URL(request.url);
 
 		if (url.pathname === "/sse" || url.pathname === "/sse/message") {
-			return MyMCP.serveSSE("/sse").fetch(request, env, ctx);
+			return PluralityMCP.serveSSE("/sse").fetch(request, env, ctx);
 		}
 
 		if (url.pathname === "/mcp") {
-			return MyMCP.serve("/mcp").fetch(request, env, ctx);
+			return PluralityMCP.serve("/mcp").fetch(request, env, ctx);
 		}
 
 		return new Response("Not found", { status: 404 });

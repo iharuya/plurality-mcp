@@ -1,19 +1,19 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "plurality-mcp-scrapbox-japanese",
+	"name": "plurality-mcp",
 	"main": "src/worker.ts",
 	"compatibility_date": "2025-07-01",
 	"compatibility_flags": ["nodejs_compat"],
 	"migrations": [
 		{
-			"new_sqlite_classes": ["MyMCP"],
+			"new_sqlite_classes": ["PluralityMCP"],
 			"tag": "v1"
 		}
 	],
 	"durable_objects": {
 		"bindings": [
 			{
-				"class_name": "MyMCP",
+				"class_name": "PluralityMCP",
 				"name": "MCP_OBJECT"
 			}
 		]

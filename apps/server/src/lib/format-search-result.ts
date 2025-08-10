@@ -6,7 +6,7 @@ type Response = ResultSuccess<Awaited<ReturnType<RPC>>>;
 
 type HitPage = {
 	title: string;
-	firstParagraph: string;
+	hitLines: string[];
 };
 type SearchResult = {
 	count: number;
@@ -17,7 +17,7 @@ export const formatSearchResult = (data: Response): SearchResult => {
 	const pages: HitPage[] = data.pages.map((page) => {
 		return {
 			title: page.title,
-			firstParagraph: page.lines.join("\n"),
+			hitLines: page.lines,
 		};
 	});
 	return {

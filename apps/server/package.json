@@ -1,5 +1,5 @@
 {
-	"name": "@plurality-mcp/scrapbox-japanese",
+	"name": "@plurality-mcp/server",
 	"scripts": {
 		"dev": "wrangler dev",
 		"typecheck": "wrangler types src/worker-configuration.d.ts && tsc --noEmit",
