@@ -1,0 +1,67 @@
+{
+	"$schema": "./node_modules/turbo/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				".env*",
+				"**/*.ts",
+				"**/*.tsx",
+				"**/*.js",
+				"**/*.jsx",
+				"**/*.json",
+				"!**/*.test.ts",
+				"!**/*.test.tsx",
+				"!dist/**",
+				"!.turbo/**",
+				"!node_modules/**",
+				"!**/.DS_Store"
+			],
+			"outputs": ["dist/**"]
+		},
+		"typecheck": {
+			"dependsOn": ["^typecheck"],
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"tsconfig.json",
+				"**/*.ts",
+				"**/*.tsx",
+				"!dist/**",
+				"!.turbo/**",
+				"!node_modules/**",
+				"!**/.DS_Store"
+			]
+		},
+		"dev": {
+			// "dependsOn": ["@hoge/db#build", "@hoge/server#build"],
+			"cache": false,
+			"persistent": true
+		},
+		"deploy": {
+			"dependsOn": ["build", "test", "^deploy"]
+		},
+		"test": {
+			"dependsOn": ["^test"],
+			"inputs": [
+				"$TURBO_DEFAULT$",
+				"tsconfig.json",
+				"vitest.config.ts",
+				"**/*.ts",
+				"**/*.tsx",
+				"**/*.js",
+				"**/*.jsx",
+				"**/*.test.ts",
+				"**/*.test.tsx",
+				"**/*.spec.ts",
+				"**/*.spec.tsx",
+				"!dist/**",
+				"!.turbo/**",
+				"!node_modules/**",
+				"!coverage/**"
+			],
+			"cache": true
+		}
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"mcpServers": {
+		"MCP_DOCKER_1": {
+			"command": "docker",
+			"args": ["mcp", "gateway", "run"]
+		},
+		"math": {
+			"command": "npx",
+			"args": ["mcp-remote", "http://localhost:8787/sse"]
+		}
+	}
+}

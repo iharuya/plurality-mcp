@@ -1,0 +1,35 @@
+{
+	"name": "@plurality-mcp/scrapbox-api",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/src/index.d.ts",
+			"import": "./dist/src/index.js"
+		}
+	},
+	"main": "./dist/src/index.js",
+	"types": "./dist/src/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"dev": "tsc --watch",
+		"build": "tsc",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run",
+		"test:ui": "vitest --ui",
+		"test:coverage": "vitest run --coverage"
+	},
+	"dependencies": {
+		"@plurality-mcp/result": "workspace:^",
+		"zod": "^4.0.15"
+	},
+	"devDependencies": {
+		"@types/node": "^24.2.0",
+		"@vitest/coverage-v8": "^3.2.4",
+		"@vitest/ui": "^3.2.4",
+		"tsx": "^4.20.3",
+		"typescript": "^5.9.2",
+		"vitest": "^3.2.4"
+	}
+}
